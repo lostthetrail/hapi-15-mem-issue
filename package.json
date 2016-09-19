@@ -16,6 +16,10 @@
   "bugs": {
     "url": "https://github.com/lostthetrail/hapi-15-mem-issue/issues"
   },
+  "engines": {
+    "node": "~6.5.0",
+    "npm": "~3.10.0"
+  },
   "homepage": "https://github.com/lostthetrail/hapi-15-mem-issue#readme",
   "dependencies": {
     "hapi": "15.0.3",
