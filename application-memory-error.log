@@ -1,0 +1,33 @@
+[~/Development/opensource/hapi-15-mem-issue]$ npm start
+
+> hapi-15-mem-issue@1.0.0 start /Users/mreynolds/Development/opensource/hapi-15-mem-issue
+> node index.js
+
+Server running at: http://0.0.0.0:8080
+
+<--- Last few GCs --->
+
+  127761 ms: Mark-sweep 1243.8 (1434.6) -> 1243.8 (1434.6) MB, 1292.5 / 0.2 ms [allocation failure] [GC in old space requested].
+  129037 ms: Mark-sweep 1243.8 (1434.6) -> 1243.6 (1434.6) MB, 1276.7 / 0.1 ms [allocation failure] [GC in old space requested].
+  130369 ms: Mark-sweep 1243.6 (1434.6) -> 1245.1 (1404.6) MB, 1331.0 / 0.1 ms [last resort gc].
+  131712 ms: Mark-sweep 1245.1 (1404.6) -> 1246.5 (1404.6) MB, 1342.8 / 0.1 ms [last resort gc].
+
+
+<--- JS stacktrace --->
+
+==== JS stack trace =========================================
+
+Security context: 0x22bb9eacfb51 <JS Object>
+    1: new constructor(aka IncomingMessage) [_http_incoming.js:~20] [pc=0x1ae445364e77] (this=0x106b25af549 <an IncomingMessage with map 0x36e0996a4661>,socket=0x38e5c05566c1 <a Socket with map 0x36e0996a5581>)
+    3: parserOnHeadersComplete [_http_common.js:~45] [pc=0x1ae445372e13] (this=0x38e5c0554b19 <an HTTPParser with map 0x36e0996ae639>,versionMajor=1,versionMinor=1,headers=0x106b25ae799 ...
+
+FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
+ 1: node::Abort() [/usr/local/bin/node]
+ 2: node::FatalException(v8::Isolate*, v8::Local<v8::Value>, v8::Local<v8::Message>) [/usr/local/bin/node]
+ 3: v8::internal::V8::FatalProcessOutOfMemory(char const*, bool) [/usr/local/bin/node]
+ 4: v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationSpace) [/usr/local/bin/node]
+ 5: v8::internal::Runtime_AllocateInTargetSpace(int, v8::internal::Object**, v8::internal::Isolate*) [/usr/local/bin/node]
+ 6: 0x1ae4452079a7
+ 7: 0x1ae445364e77
+ 8: 0x1ae44523445b
+Abort trap: 6

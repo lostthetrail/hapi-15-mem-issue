@@ -1,0 +1,27 @@
+{
+  "name": "hapi-15-mem-issue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "artillery quick --duration 60 --rate 100 -n 100 http://localhost:8080/validate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lostthetrail/hapi-15-mem-issue.git"
+  },
+  "author": "Mark Reynolds",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lostthetrail/hapi-15-mem-issue/issues"
+  },
+  "homepage": "https://github.com/lostthetrail/hapi-15-mem-issue#readme",
+  "dependencies": {
+    "hapi": "15.0.3",
+    "hoek": "4.0.2"
+  },
+  "devDependencies": {
+    "artillery": "1.5.0-12"
+  }
+}
